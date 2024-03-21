@@ -11,6 +11,13 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@main
+
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/golang@main
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
     - name: Check out code
       uses: actions/checkout@v2
 
